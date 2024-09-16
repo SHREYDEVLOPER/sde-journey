@@ -1,56 +1,15 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
-class Solution {
+ class Solution {
 public:
-    int nodecl(TreeNode* p)
-    {
-      if(p==NULL)
-      {
-        return 0;
-      }
-      int l=nodecl(p->left);
-      int r=nodecl(p->right);
-
-      return l+r+1;
-    }
-    int nodecr(TreeNode* q)
-    {
-      if(q==NULL)
-      {
-        return 0;
-      }
-      int l=nodecr(q->left);
-      int r=nodecr(q->right);
-
-      return l+r+1;
-    }
     bool isSameTree(TreeNode* p, TreeNode* q) {
-        int nll=nodecl(p);
-        int nrr=nodecr(q);
-        if(nll!=nrr)
-        {
-          return false;
+        if(p==NULL && q==NULL) {
+            return true;  
         }
-        if(nll==0)
-        {
-          return true;
+        if(p==NULL || q==NULL) {
+            return false;  
         }
-        if(p->val!=q->val)
-        {
-          return false;
-        }
-
-        return isSameTree(p->left,q->left) &&isSameTree(p->right,q->right);
-
-        
-    }
+        bool b1=isSameTree(p->left,q->left);
+        bool b2=isSameTree(p->right,q->right);
+        bool b3=(p->val==q->val); // Corrected 'value' to 'val'
+        return b1&&b2&&b3;
+    }
 };
