@@ -1,6 +1,3 @@
- #include <vector>
-#include <algorithm>
-
 class Solution {
 public:
     int maximumProduct( vector<int>& nums) {
