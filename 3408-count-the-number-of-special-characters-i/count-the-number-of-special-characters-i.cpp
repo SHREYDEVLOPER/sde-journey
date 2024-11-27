@@ -41,7 +41,7 @@ public:
         int ct=0;
         for(auto& i:ss)
         { 
-            char cb=i-'a'+'A';//CONVERSION IN CAPITAL
+            char cb=toupper(i);//CONVERSION IN CAPITAL
             if(bmp.find(cb)!=bmp.end())
             {
                 ct++;
