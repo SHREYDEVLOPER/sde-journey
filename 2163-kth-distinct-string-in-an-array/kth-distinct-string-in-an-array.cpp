@@ -1,24 +1,28 @@
  class Solution {
 public:
     string kthDistinct(vector<string>& arr, int k) {
+        vector<string> ans;
         unordered_map<string, int> mp;
 
          for (auto& i : arr) {
             mp[i]++;
         }
 
-        vector<string> tt;
-
-         for (auto& str : arr) {
-            if (mp[str] == 1) {
-                tt.push_back(str);
+         for (auto& i : arr) {  
+            if (mp[i] == 1) {
+                ans.push_back(i);
             }
         }
 
-         if (k > tt.size()) {
+         for (auto& i : ans) {
+            cout << i << " ";
+        }
+        cout << endl;
+
+         if (k > ans.size()) {
             return "";  
         }
 
-        return tt[k - 1];  
+        return ans[k - 1];  
     }
 };
