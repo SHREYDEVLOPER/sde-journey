@@ -22,8 +22,9 @@ public:
          if (ans.empty()) {
             return ""; 
         }
-
-         string result(1, ans.back());  
+         int l=ans.size()-1;
+         string result="";
+          result +=ans[l];  
         return result;
     }
 };
