@@ -2,17 +2,13 @@
 public:
     vector<int> rightSideView(TreeNode* root) {
         vector<int> ans;
-
-         if (!root) return ans;
-
-         queue<TreeNode*> q;
+          if (!root) return ans;
+          queue<TreeNode*> q;
         q.push(root);
-
-        while (!q.empty()) {
+         while (!q.empty()) {
             int s = q.size();
             vector<int> lvl;
-
-            for (int i = 0; i < s; i++) {
+             for (int i = 0; i < s; i++) {
                 TreeNode* temp = q.front();
                 q.pop();
 
@@ -25,10 +21,8 @@ public:
                     q.push(temp->right);
                 }
             }
-
-             ans.push_back(lvl.back());
+              ans.push_back(lvl.back());
         }
-
-        return ans;
+         return ans;
     }
 };
