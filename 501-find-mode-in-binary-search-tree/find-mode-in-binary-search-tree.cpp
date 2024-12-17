@@ -1,44 +1,29 @@
- class Solution {
+ 
+class Solution {
 public:
-     void inordertrav(TreeNode* root, vector<int>& values) {
-        if (root == nullptr) {
-            return;
-        }
-        inordertrav(root->left, values);
-        values.push_back(root->val);
-        inordertrav(root->right, values);    
+    void dfs(TreeNode* root,unordered_map<int,int>& mp)
+    {
+        if(root==NULL)
+        return;
+        mp[root->val]++;
+        dfs(root->left,mp);
+        dfs(root->right,mp);
+        return ;
     }
-
     vector<int> findMode(TreeNode* root) {
+        unordered_map<int,int> mp;
+        dfs(root,mp);
+        int maxi=0;
+        for(auto it:mp)
+        {
+            maxi=max(maxi,it.second);
+        }
         vector<int> ans;
-        if (root == NULL) {
-            return {};
+        for(auto it:mp)
+        {
+            if(it.second==maxi)
+            ans.push_back(it.first);
         }
-
-        if (root->left == NULL && root->right == NULL) {
-            ans.push_back(root->val);
-            return ans;
-        }
-
-         vector<int> values;
-        inordertrav(root, values);
-
-         map<int, int> mp;
-        for (auto& i : values) {
-            mp[i]++;
-        }
-
-         int maxFreq = 0;
-        for (auto& i : mp) {
-            maxFreq = max(maxFreq, i.second);
-        }
-
-         for (auto& i : mp) {
-            if (i.second == maxFreq) {
-                ans.push_back(i.first);
-            }
-        }
-
         return ans;
     }
 };
