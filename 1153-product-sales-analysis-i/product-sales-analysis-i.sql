@@ -6,4 +6,4 @@
 SELECT sales.year, sales.price, product.product_name 
 FROM sales 
 LEFT JOIN product 
-ON sales.product_id = product.product_id;
+using(product_id);
