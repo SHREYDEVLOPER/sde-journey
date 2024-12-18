@@ -1,15 +1,20 @@
  class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
-        if(p==NULL && q==NULL) {
-            return true;  
+        // Base case: Both trees are empty
+        if (p == nullptr && q == nullptr) {
+            return true;
         }
-        if(p==NULL || q==NULL) {
-            return false;  
+        
+        // Base case: One of the trees is empty
+        if (p == nullptr || q == nullptr) {
+            return false;
         }
-        bool b1=isSameTree(p->left,q->left);
-        bool b2=isSameTree(p->right,q->right);
-        bool b3=(p->val==q->val); // Corrected 'value' to 'val'
-        return b1&&b2&&b3;
-    }
+        
+         if (p->val != q->val) {
+            return false;
+        }
+        
+         return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+    }
 };
