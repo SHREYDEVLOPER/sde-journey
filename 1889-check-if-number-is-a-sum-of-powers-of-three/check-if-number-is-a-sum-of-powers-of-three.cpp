@@ -1,12 +1,20 @@
  class Solution {
 public:
-    bool checkPowersOfThree(int n) {
+    bool powern(int n, int x) {
+        if (n <= 0) {
+            return false;
+        }
+        
         while (n > 0) {
-            if (n % 3==2) {
+            if (n % x == 2) {  
                 return false;
             }
-            n /= 3;
+            n /= x;
         }
         return true;
+    }
+
+    bool checkPowersOfThree(int n) {
+        return powern(n, 3);
     }
 };
